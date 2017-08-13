@@ -31,7 +31,8 @@ function GetURLsParas()
 
 	var data = {
         "query": query,
-        "sort_by" : sort_by
+        "sort_by" : sort_by,
+        "use_lucene_syntax": true
     };
     return data;
 }
@@ -39,9 +40,10 @@ function GetURLsParas()
 function changeURLParams(){
 
 	var query = $("#query").val();
+  // var query = $("#query").val() + "+AND+date_published%3A%5B2016-10-28+TO+2016-12-04%5D";
 	var sort = $("input[name=sort_by]:checked").val();
 
-	var query_string = "query=" + encodeURIComponent(query) + "&sort=" + sort; // + "&mentions=" + mentions;
+	var query_string = "query=" + encodeURIComponent(query) + "&sort=" + sort + "&use_lucene_syntax=true"; // + "&mentions=" + mentions;
 	location.hash = query_string;
 
 	return query_string;
